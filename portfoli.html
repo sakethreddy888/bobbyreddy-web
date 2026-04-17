@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="V Saketh Reddy - Entry-level Oracle Fusion Technical & OIC Developer Portfolio">
+    <title>V Saketh Reddy | Oracle Fusion & OIC Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent: #ff69b4;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff69b4;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            bottom: -8px;
+            left: 0;
+            border-radius: 9999px;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(249 115 22 / 0.25);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            background-color: #ff69b4;
+            color: #111111;
+            transform: scale(1.05);
+        }
+        
+        .accent-glow {
+            text-shadow: 0 0 20px rgb(255 105 180);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="bg-black border-b border-pink-500/20 sticky top-0 z-50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-inner">
+                        ☁️
+                    </div>
+                    <h1 class="text-2xl font-semibold tracking-tighter font-['Space_Grotesk'] text-white">
+                        V SAKETH REDDY
+                    </h1>
+                    <span class="text-pink-400 text-xs font-medium px-3 py-1 bg-pink-500/10 rounded-3xl border border-pink-500/30">OIC</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#about" onclick="smoothScrollTo('about')" class="nav-link text-white hover:text-pink-400">About</a>
+                    <a href="#education" onclick="smoothScrollTo('education')" class="nav-link text-white hover:text-pink-400">Education</a>
+                    <a href="#projects" onclick="smoothScrollTo('projects')" class="nav-link text-white hover:text-pink-400">Projects</a>
+                    <a href="#skills" onclick="smoothScrollTo('skills')" class="nav-link text-white hover:text-pink-400">Skills</a>
+                    <a href="#certifications" onclick="smoothScrollTo('certifications')" class="nav-link text-white hover:text-pink-400">Certifications</a>
+                    <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link text-white hover:text-pink-400">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://www.linkedin.com" target="_blank" class="flex items-center justify-center w-9 h-9 border border-pink-500/30 hover:border-pink-400 rounded-2xl text-pink-400 hover:text-pink-300">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="flex items-center justify-center w-9 h-9 border border-pink-500/30 hover:border-pink-400 rounded-2xl text-pink-400 hover:text-pink-300">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    
+                    <a href="#" onclick="downloadResume()" 
+                       class="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2.5 rounded-3xl text-sm font-semibold shadow-lg shadow-pink-500/30">
+                        <i class="fas fa-download"></i>
+                        <span>Resume</span>
+                    </a>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl text-pink-400 hover:text-pink-300">
+                        <i id="hamburger-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-pink-500/20 py-4 px-6 flex flex-col gap-4 text-sm font-medium">
+                <a href="#about" onclick="toggleMobileMenu();smoothScrollTo('about')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">About</a>
+                <a href="#education" onclick="toggleMobileMenu();smoothScrollTo('education')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Education</a>
+                <a href="#projects" onclick="toggleMobileMenu();smoothScrollTo('projects')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Projects</a>
+                <a href="#skills" onclick="toggleMobileMenu();smoothScrollTo('skills')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Skills</a>
+                <a href="#certifications" onclick="toggleMobileMenu();smoothScrollTo('certifications')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Certifications</a>
+                <a href="#contact" onclick="toggleMobileMenu();smoothScrollTo('contact')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-pink-500/10 text-pink-400 text-sm font-medium px-5 py-2 rounded-3xl border border-pink-500/30">
+                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+                    OPEN TO OPPORTUNITIES
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-semibold font-['Space_Grotesk'] leading-none tracking-tighter">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-300">V Saketh Reddy</span>
+                </h1>
+                
+                <h2 class="text-3xl md:text-4xl text-pink-300 font-medium">
+                    Entry-level Oracle Fusion Technical &amp; OIC Developer
+                </h2>
+                
+                <p class="text-lg text-zinc-400 max-w-lg">
+                    Hands-on experience in BI Publisher Reports, OTBI Dashboards, FBDI File Uploads, ESS Jobs &amp; scalable OIC Integrations (SOAP, REST, FTP, ERP Cloud Adapters). Strong understanding of Procure-to-Pay (P2P) business flows.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a onclick="smoothScrollTo('projects')" 
+                       class="flex items-center gap-3 bg-white text-black hover:bg-pink-100 px-8 py-4 rounded-3xl font-semibold text-lg shadow-xl shadow-pink-500/20">
+                        <i class="fas fa-rocket"></i>
+                        Explore My Projects
+                    </a>
+                    
+                    <a href="mailto:sakethreddy409390@gmail.com" 
+                       class="flex items-center gap-3 border-2 border-pink-400 hover:bg-pink-500/10 text-pink-400 px-8 py-4 rounded-3xl font-semibold text-lg">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm">
+                    <div>
+                        <span class="block text-4xl font-bold text-pink-400">2</span>
+                        <span class="text-zinc-400">Live Projects</span>
+                    </div>
+                    <div class="h-12 w-px bg-pink-500/30"></div>
+                    <div>
+                        <span class="block text-4xl font-bold text-pink-400">OIC</span>
+                        <span class="text-zinc-400">Certified</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6 text-zinc-400">
+                    <a href="tel:9398432278" class="flex items-center gap-2 hover:text-pink-400">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9398432278</span>
+                    </a>
+                    <a href="mailto:sakethreddy409390@gmail.com" class="flex items-center gap-2 hover:text-pink-400">
+                        <i class="fas fa-envelope"></i>
+                        <span>sakethreddy409390@gmail.com</span>
+                    </a>
+                    <div class="text-xs px-4 py-2 bg-zinc-900 rounded-3xl flex items-center gap-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Bengaluru, India
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="relative flex justify-center">
+                <div class="relative w-80 h-80 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-transparent rounded-[4rem] rotate-12 blur-3xl"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-72 h-72 bg-zinc-900 rounded-3xl border-8 border-pink-400/30 shadow-2xl shadow-pink-500/40 flex items-center justify-center overflow-hidden">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4">☁️</div>
+                                <div class="text-pink-300 text-2xl font-bold tracking-widest">FUSION + OIC</div>
+                                <div class="text-xs text-zinc-500 mt-6">V Saketh Reddy • Oracle Cloud</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-6 -left-6 bg-black border border-pink-400 text-pink-400 text-xs font-medium px-4 py-2 rounded-3xl flex items-center gap-2 shadow-xl">
+                        <i class="fas fa-file-alt"></i>
+                        BI PUBLISHER
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-black border border-pink-400 text-pink-400 text-xs font-medium px-4 py-2 rounded-3xl flex items-center gap-2 shadow-xl">
+                        <i class="fas fa-plug"></i>
+                        ERP INTEGRATIONS
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 flex flex-col items-center gap-1 text-pink-400/70 text-xs tracking-widest">
+            <div class="animate-bounce">SCROLL</div>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+<section id="about" class="py-24 border-t border-pink-500/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+            
+            <!-- Profile Image -->
+            <div class="md:col-span-5 flex flex-col items-center md:items-start">
+                <div class="relative mb-8 md:mb-10">
+                    <!-- Main Circle -->
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-zinc-900 border-8 border-pink-400 shadow-2xl shadow-pink-500/40 overflow-hidden">
+                        <img src="saketh 1.jpg" 
+                             alt="Saketh Profile"
+                             class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Subtle Pulse Ring -->
+                    <div class="absolute inset-0 rounded-full border-4 border-pink-400/30 animate-pulse"></div>
+                </div>
+                
+                <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-4 text-center md:text-left">
+                    My Story
+                </h2>
+                <p class="text-pink-400 text-lg text-center md:text-left">
+                    From classroom to cloud — building scalable Oracle Fusion & OIC solutions
+                </p>
+            </div>
+            
+            <!-- Content -->
+            <div class="md:col-span-7 text-zinc-300 leading-relaxed text-lg">
+                <p class="mb-6">
+                    Entry-level Oracle Fusion Technical & OIC Developer with hands-on experience in BI Publisher Reports, 
+                    OTBI Dashboards, FBDI File Uploads, ESS Jobs, and OIC Integrations (SOAP, REST, FTP, ERP Cloud Adapters).
+                </p>
+                <p>
+                    Strong understanding of Procure-to-Pay (P2P) business flows. Passionate about implementing scalable 
+                    integrations, reports, and customizations in Oracle Cloud to drive business efficiency.
+                </p>
+                
+                <!-- Skill Tags -->
+                <div class="mt-10 flex flex-wrap gap-3">
+                    <div class="flex items-center gap-2 text-sm bg-zinc-900 hover:bg-zinc-800 transition-colors px-5 py-3 rounded-3xl">
+                        <i class="fas fa-cloud"></i>
+                        <span>Oracle Fusion Cloud R13</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm bg-zinc-900 hover:bg-zinc-800 transition-colors px-5 py-3 rounded-3xl">
+                        <i class="fas fa-plug"></i>
+                        <span>OIC Orchestrations</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm bg-zinc-900 hover:bg-zinc-800 transition-colors px-5 py-3 rounded-3xl">
+                        <i class="fas fa-file-export"></i>
+                        <span>FBDI & ESS Jobs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 bg-zinc-950 border-t border-b border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Education</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- MCA -->
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Mohan Babu University, Tirupathi</h3>
+                            <p class="text-pink-400">Tirupathi, Andhra Pradesh</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2023 – 2025</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">Master of Computer Applications (MCA) • GPA: 8.5</p>
+                </div>
+                
+                <!-- B.Sc -->
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Enlight Degree College, Hindupur</h3>
+                            <p class="text-pink-400">Hindupur, Andhra Pradesh</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2020 – 2023</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">B.Sc (Computer Science) • GPA: 7.5</p>
+                </div>
+                
+                <!-- Intermediate -->
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Suvarna Bharathi Jr. College, Hindupur</h3>
+                            <p class="text-pink-400">Hindupur, Andhra Pradesh</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2018 – 2020</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">Intermediate (MPCS) • GPA: 7.29</p>
+                </div>
+                
+                <!-- SSC -->
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Z.P. High School, Muddireddypalli</h3>
+                            <p class="text-pink-400">Muddireddypalli, Andhra Pradesh</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2017 – 2018</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">SSC • GPA: 8.5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 border-t border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl">📊</div>
+                        <h3 class="font-semibold text-2xl">Custom BI Publisher Report – Supplier Invoice Summary</h3>
+                    </div>
+                    <ul class="text-zinc-400 space-y-3 text-sm leading-relaxed mt-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Created a custom BI Publisher Data Model using SQL joining AP and Supplier tables.</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Designed report layout in RTF Template and implemented Bursting to send PDF output to specific users.</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Automated report scheduling using ESS Job.</li>
+                    </ul>
+                    <div class="mt-8 pt-6 border-t border-pink-500/10 text-xs flex items-center justify-between text-zinc-500">
+                        <span class="flex items-center gap-1"><i class="fas fa-calendar"></i> Oracle Fusion Cloud</span>
+                        <span class="px-4 py-1 bg-pink-500/10 text-pink-400 rounded-3xl">BI Publisher • ESS</span>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl">🔄</div>
+                        <h3 class="font-semibold text-2xl">OIC Integration – ERP Cloud ↔ On-Prem Supplier Sync</h3>
+                    </div>
+                    <ul class="text-zinc-400 space-y-3 text-sm leading-relaxed mt-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Designed OIC integration to synchronize supplier master data between Oracle ERP Cloud and an on-prem system.</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Used REST APIs and ERP Cloud Adapter for data extraction and loading.</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Implemented FBDI file generation, upload, and error handling in OIC.</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-pink-400 mt-1"></i> Configured orchestration flow, mappings, and schedules.</li>
+                    </ul>
+                    <div class="mt-8 pt-6 border-t border-pink-500/10 text-xs flex items-center justify-between text-zinc-500">
+                        <span class="flex items-center gap-1"><i class="fas fa-calendar"></i> Oracle Integration Cloud</span>
+                        <span class="px-4 py-1 bg-pink-500/10 text-pink-400 rounded-3xl">REST • FBDI • ERP Adapter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-zinc-950 border-t border-b border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Technical Skills</h2>
+            
+            <div class="flex flex-wrap gap-3">
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-file-alt"></i> BI Publisher (Data Models, Layouts, Bursting)
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-chart-bar"></i> OTBI Analysis and Dashboards
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-upload"></i> FBDI Templates &amp; Uploads
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-clock"></i> ESS Jobs &amp; Job Sets
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-plug"></i> SOAP &amp; REST API Integrations
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-cloud"></i> ERP Cloud Adapter
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-folder-open"></i> FTP Adapter
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-file-export"></i> File-Based Integrations with FBDI
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-exchange-alt"></i> Mapping, Transformations, Error Handling
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-database"></i> SQL
+                </div>
+                <div class="skill-pill bg-zinc-900 text-white px-6 py-3 rounded-3xl text-sm font-medium flex items-center gap-2">
+                    <i class="fas fa-handshake"></i> Procure to Pay (P2P)
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl">☁️</div>
+                    <p class="mt-4 font-semibold text-pink-400">Oracle Fusion Cloud R13</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl">🔌</div>
+                    <p class="mt-4 font-semibold text-pink-400">Oracle Integration Cloud (OIC)</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl">🗄️</div>
+                    <p class="mt-4 font-semibold text-pink-400">ATP Database</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl">📂</div>
+                    <p class="mt-4 font-semibold text-pink-400">WinSCP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- CERTIFICATIONS / TRAINING -->
+<section id="certifications" class="py-24 border-t border-pink-500/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12 text-center md:text-left">
+            Certifications & Training
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            
+          <!-- OIC Card -->
+<a href="#" onclick="showCertificate('techleads.png'); return false;" class="block group">
+    <div class="bg-black border border-pink-500/20 hover:border-pink-400 transition-all rounded-3xl p-8 flex gap-6 h-full">
+        <div class="flex-shrink-0 w-16 h-16 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+            📜
+        </div>
+        <div>
+            <h3 class="text-2xl font-semibold mb-1">Oracle Integration Cloud (OIC)</h3>
+            <p class="text-pink-400 font-medium">Tech Lead Institute • 2025</p>
+            <p class="mt-4 text-zinc-400 leading-relaxed">
+                Hands-on training on Integrations, REST/SOAP APIs, FBDI, and BI Reports.
+            </p>
+            <p class="text-xs text-pink-400 mt-6 font-medium flex items-center gap-1">
+                View Certificate →
+            </p>
+        </div>
+    </div>
+</a>
+
+<!-- SQL Card -->
+<a href="#" onclick="showCertificate('sql certificate.jpg'); return false;" class="block group">
+    <div class="bg-black border border-pink-500/20 hover:border-pink-400 transition-all rounded-3xl p-8 flex gap-6 h-full">
+        <div class="flex-shrink-0 w-16 h-16 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+            📊
+        </div>
+        <div>
+            <h3 class="text-2xl font-semibold mb-1">SQL & Database</h3>
+            <p class="text-pink-400 font-medium">HACKER RANK • 2025</p>
+            <p class="mt-4 text-zinc-400 leading-relaxed">
+                Hands-on training on Advanced SQL, PL/SQL, Database Design, Query Optimization, and Data Management.
+            </p>
+            <p class="text-xs text-pink-400 mt-6 font-medium flex items-center gap-1">
+                View Certificate →
+            </p>
+        </div>
+    </div>
+</a>
+        </div>
+    </div>
+</section>
+<!-- Certificate Modal -->
+<div id="certificateModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
+    <div class="max-w-4xl w-full mx-4 bg-zinc-900 rounded-3xl overflow-hidden">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-zinc-800">
+            <h3 id="modalTitle" class="text-2xl font-semibold">Certificate</h3>
+            <button onclick="closeCertificate()" 
+                    class="text-zinc-400 hover:text-white text-3xl leading-none">×</button>
+        </div>
+        
+        <!-- Certificate Image -->
+        <div class="p-8 bg-zinc-950 flex items-center justify-center min-h-[400px]">
+            <img id="certificateImage" 
+                 src=""
+                 alt="Certificate" 
+                 class="max-h-[70vh] max-w-full rounded-2xl shadow-2xl">
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function showCertificate(src) {
+    const modal = document.getElementById('certificateModal');
+    const image = document.getElementById('certificateImage');
+    const title = document.getElementById('modalTitle');
+    
+    image.src = src;
+    
+    // Optional: Change title based on certificate
+    if (src.includes('techleads') || src.includes('OIC')) {
+        title.textContent = "Oracle Integration Cloud (OIC) Certificate";
+    } else if (src.includes('sql')) {
+        title.textContent = "SQL & Database Certificate";
+    }
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    
+    // Close on clicking outside the content
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeCertificate();
+    });
+}
+
+function closeCertificate() {
+    const modal = document.getElementById('certificateModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// Close with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        closeCertificate();
+    }
+});
+</script>
+    
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-950 border-t border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-6">Let's Connect</h2>
+                    <p class="text-zinc-400 text-lg">I'm actively seeking opportunities as an Oracle Fusion Technical &amp; OIC Developer. Feel free to reach out!</p>
+                    
+                    <div class="mt-12 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl">📧</div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <a href="mailto:sakethreddy409390@gmail.com" class="text-pink-400 hover:underline">sakethreddy409390@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl">📱</div>
+                            <div>
+                                <p class="font-medium">Phone</p>
+                                <a href="tel:9398432278" class="text-pink-400 hover:underline">+91 9398432278</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl">📍</div>
+                            <div>
+                                <p class="font-medium">Location</p>
+                                <p class="text-zinc-400">Bengaluru, Karnataka, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 bg-black border border-pink-500/20 rounded-3xl p-8 md:p-12">
+                    <form onsubmit="handleContactForm(event)" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest mb-2 text-zinc-400">Your Name</label>
+                                <input type="text" id="name" class="w-full bg-zinc-900 border border-pink-500/30 focus:border-pink-400 rounded-3xl px-6 py-4 outline-none" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest mb-2 text-zinc-400">Your Email</label>
+                                <input type="email" id="email" class="w-full bg-zinc-900 border border-pink-500/30 focus:border-pink-400 rounded-3xl px-6 py-4 outline-none" placeholder="you@email.com" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest mb-2 text-zinc-400">Message</label>
+                            <textarea id="message" rows="5" class="w-full bg-zinc-900 border border-pink-500/30 focus:border-pink-400 rounded-3xl px-6 py-4 outline-none resize-none" placeholder="Hi Saketh, I saw your portfolio..."></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-pink-500 hover:bg-pink-600 text-white py-5 rounded-3xl font-semibold flex items-center justify-center gap-3">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-pink-500/20 py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-zinc-500 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 V Saketh Reddy. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">
+                Built with <span class="text-pink-400">❤</span> using HTML, Tailwind &amp; pure passion for Oracle Cloud
+            </p>
+            <div class="flex gap-6">
+                <a href="https://www.linkedin.com" target="_blank" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com" target="_blank" class="hover:text-pink-400"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script is already loaded via CDN
+
+        function smoothScrollTo(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        let mobileOpen = false;
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('hamburger-icon');
+            
+            mobileOpen = !mobileOpen;
+            
+            if (mobileOpen) {
+                menu.classList.remove('hidden');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        function downloadResume() {
+            // In a real deployment, replace this with the actual resume PDF link
+            const resumeLink = document.createElement('a');
+            resumeLink.href = '#'; // Replace with your hosted resume PDF URL when live
+            resumeLink.download = 'V_Saketh_Reddy_Oracle_Fusion_OIC_Resume.pdf';
+            resumeLink.click();
+            
+            // Temporary alert for demo
+            const alertBox = document.createElement('div');
+            alertBox.style.position = 'fixed';
+            alertBox.style.bottom = '20px';
+            alertBox.style.left = '20px';
+            alertBox.style.backgroundColor = '#ff69b4';
+            alertBox.style.color = '#111';
+            alertBox.style.padding = '16px 24px';
+            alertBox.style.borderRadius = '9999px';
+            alertBox.style.boxShadow = '0 10px 15px -3px rgb(249 115 22)';
+            alertBox.style.zIndex = '9999';
+            alertBox.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-check-circle"></i>
+                    <span class="font-semibold">Resume downloaded! (In live site this would download the full PDF)</span>
+                </div>
+            `;
+            document.body.appendChild(alertBox);
+            
+            setTimeout(() => {
+                alertBox.style.transition = 'all 0.3s ease';
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.remove(), 300);
+            }, 2800);
+        }
+
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            // Demo form submission
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `
+                <i class="fas fa-spinner animate-spin"></i>
+                <span>Sending...</span>
+            `;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = `
+                    <i class="fas fa-check"></i>
+                    <span>Message Sent!</span>
+                `;
+                btn.style.backgroundColor = '#22c55e';
+                
+                // Reset form
+                e.target.reset();
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.disabled = false;
+                    
+                    // Show success toast
+                    const toast = document.createElement('div');
+                    toast.style.position = 'fixed';
+                    toast.style.top = '20px';
+                    toast.style.right = '20px';
+                    toast.style.backgroundColor = '#22c55e';
+                    toast.style.color = '#111';
+                    toast.style.padding = '16px 24px';
+                    toast.style.borderRadius = '9999px';
+                    toast.style.boxShadow = '0 10px 15px -3px rgb(134 239 172)';
+                    toast.innerHTML = `✅ Message sent successfully! Thank you, I'll reply soon.`;
+                    document.body.appendChild(toast);
+                    
+                    setTimeout(() => toast.remove(), 4000);
+                }, 1800);
+            }, 1500);
+        }
+
+        // Keyboard shortcut for fun
+        document.addEventListener('keydown', function(e) {
+            if (e.metaKey && e.key === "k") {
+                e.preventDefault();
+                smoothScrollTo('contact');
+            }
+        });
+
+        console.log('%c🚀 Portfolio for V Saketh Reddy loaded successfully! Black + Pink theme ready.', 'color: #ff69b4; font-weight: bold;');
+    </script>
+</body>
+</html>
+```
